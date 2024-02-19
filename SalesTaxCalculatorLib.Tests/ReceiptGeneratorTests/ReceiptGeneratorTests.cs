@@ -1,9 +1,9 @@
 using NUnit.Framework;
 
-namespace SalesTaxCalculatorLib.Tests;
+namespace SalesTaxCalculatorLib.Tests.ReceiptGeneratorTests;
 
 [TestFixture]
-public class BasicTaxCalculatorTests
+public class ReceiptGeneratorTests
 {
     [SetUp]
     public void Setup()
