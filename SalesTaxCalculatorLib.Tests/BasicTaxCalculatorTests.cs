@@ -3,7 +3,7 @@ using NUnit.Framework;
 namespace SalesTaxCalculatorLib.Tests;
 
 [TestFixture]
-public class Tests
+public class BasicTaxCalculatorTests
 {
     [SetUp]
     public void Setup()
