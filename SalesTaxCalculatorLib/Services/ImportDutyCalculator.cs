@@ -14,7 +14,7 @@ public class ImportDutyCalculator : ITaxCalculator
             return 0m;
         }
 
-        decimal importDutyTax = item.ShelfPrice * TaxRates.ImportDuty;
+        decimal importDutyTax = item.Price * TaxRates.ImportDuty;
 
         var roundedImportDutyTax = TaxUtility.RoundUpTax(importDutyTax);
 

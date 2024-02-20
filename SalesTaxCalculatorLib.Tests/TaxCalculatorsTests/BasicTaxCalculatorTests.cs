@@ -25,7 +25,7 @@ public class BasicTaxCalculatorTests
         var item = new Item
         {
             Name = "Book",
-            ShelfPrice = 12.49m,
+            Price = 12.49m,
             IsImported = false,
             Type = ItemTypeEnum.Book
         };
@@ -46,7 +46,7 @@ public class BasicTaxCalculatorTests
         var item = new Item
         {
             Name = "Music CD",
-            ShelfPrice = 14.99m,
+            Price = 14.99m,
             IsImported = false,
             Type = ItemTypeEnum.Other
         };
@@ -67,7 +67,7 @@ public class BasicTaxCalculatorTests
         var item = new Item
         {
             Name = "Chocolate bar",
-            ShelfPrice = 0.85m,
+            Price = 0.85m,
             IsImported = false,
             Type = ItemTypeEnum.Food
         };
@@ -88,7 +88,7 @@ public class BasicTaxCalculatorTests
         var item = new Item
         {
             Name = "Perfume",
-            ShelfPrice = 18.99m,
+            Price = 18.99m,
             IsImported = false,
             Type = ItemTypeEnum.Other
         };
@@ -109,7 +109,7 @@ public class BasicTaxCalculatorTests
         var item = new Item
         {
             Name = "Packet of headache pills",
-            ShelfPrice = 9.75m,
+            Price = 9.75m,
             IsImported = false,
             Type = ItemTypeEnum.Medical
         };

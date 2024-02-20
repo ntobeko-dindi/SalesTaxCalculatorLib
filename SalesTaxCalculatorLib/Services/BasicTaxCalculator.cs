@@ -15,7 +15,7 @@ public class BasicTaxCalculator : ITaxCalculator
             return 0m; 
         }
 
-        decimal basicTax = item.ShelfPrice * TaxRates.BasicTaxRate;
+        decimal basicTax = item.Price * TaxRates.BasicTaxRate;
 
         var roundedBasicTax = TaxUtility.RoundUpTax(basicTax);
 

@@ -29,9 +29,9 @@ public class ReceiptGeneratorTests
         //--------------------Arrange-------------------------
         var items = new List<Item>
         {
-            new() { Name = "Book", ShelfPrice = 12.49m, Type = ItemTypeEnum.Book },
-            new() { Name = "Music CD", ShelfPrice = 14.99m, Type = ItemTypeEnum.Other },
-            new() { Name = "Chocolate Bar", ShelfPrice = 0.85m, Type = ItemTypeEnum.Food }
+            new() { Name = "Book", Price = 12.49m, Type = ItemTypeEnum.Book },
+            new() { Name = "Music CD", Price = 14.99m, Type = ItemTypeEnum.Other },
+            new() { Name = "Chocolate Bar", Price = 0.85m, Type = ItemTypeEnum.Food }
         };
 
         _basicTaxCalculator.CalculateTax(Arg.Any<Item>()).Returns(x => ((Item)x[0]).Name == "Music CD" ? 1.50m : 0m);
@@ -55,13 +55,13 @@ public class ReceiptGeneratorTests
         //--------------------Arrange-------------------------
         var items = new List<Item>
         {
-            new() { Name = "Imported box of chocolates", ShelfPrice = 10.00m, IsImported = true, Type = ItemTypeEnum.Food },
-            new() { Name = "Imported bottle of perfume", ShelfPrice = 47.50m, IsImported = true, Type = ItemTypeEnum.Other }
+            new() { Name = "Imported box of chocolates", Price = 10.00m, IsImported = true, Type = ItemTypeEnum.Food },
+            new() { Name = "Imported bottle of perfume", Price = 47.50m, IsImported = true, Type = ItemTypeEnum.Other }
         };
 
         _basicTaxCalculator.CalculateTax(Arg.Any<Item>()).Returns(x => ((Item)x[0]).Name == "Imported bottle of perfume" ? 4.75m : 0m);
 
-        _importDutyTaxCalculator.CalculateTax(Arg.Any<Item>()).Returns(x => ((Item)x[0]).IsImported ? ((Item)x[0]).ShelfPrice * 0.05m : 0m);
+        _importDutyTaxCalculator.CalculateTax(Arg.Any<Item>()).Returns(x => ((Item)x[0]).IsImported ? ((Item)x[0]).Price * 0.05m : 0m);
 
         //--------------------Act-----------------------------
         var receipt = _receiptGenerator.GenerateReceipt(items);
@@ -80,16 +80,16 @@ public class ReceiptGeneratorTests
         //--------------------Arrange-------------------------
         var items = new List<Item>
         {
-            new() { Name = "Imported bottle of perfume", ShelfPrice = 27.99m, IsImported = true, Type = ItemTypeEnum.Other },
-            new() { Name = "Bottle of perfume", ShelfPrice = 18.99m, Type = ItemTypeEnum.Other },
-            new() { Name = "Packet of headache pills", ShelfPrice = 9.75m, Type = ItemTypeEnum.Medical },
-            new() { Name = "Box of imported chocolates", ShelfPrice = 11.25m, IsImported = true, Type = ItemTypeEnum.Food }
+            new() { Name = "Imported bottle of perfume", Price = 27.99m, IsImported = true, Type = ItemTypeEnum.Other },
+            new() { Name = "Bottle of perfume", Price = 18.99m, Type = ItemTypeEnum.Other },
+            new() { Name = "Packet of headache pills", Price = 9.75m, Type = ItemTypeEnum.Medical },
+            new() { Name = "Box of imported chocolates", Price = 11.25m, IsImported = true, Type = ItemTypeEnum.Food }
         };
 
         _basicTaxCalculator.CalculateTax(Arg.Any<Item>()).Returns(x => 
-        ((Item)x[0]).Name == "Imported bottle of perfume" || ((Item)x[0]).Name == "Bottle of perfume" ? ((Item)x[0]).ShelfPrice * 0.1m : 0m);
+        ((Item)x[0]).Name == "Imported bottle of perfume" || ((Item)x[0]).Name == "Bottle of perfume" ? ((Item)x[0]).Price * 0.1m : 0m);
 
-        _importDutyTaxCalculator.CalculateTax(Arg.Any<Item>()).Returns(x => ((Item)x[0]).IsImported ? ((Item)x[0]).ShelfPrice * 0.05m : 0m);
+        _importDutyTaxCalculator.CalculateTax(Arg.Any<Item>()).Returns(x => ((Item)x[0]).IsImported ? ((Item)x[0]).Price * 0.05m : 0m);
 
         //--------------------Act-----------------------------
         var receipt = _receiptGenerator.GenerateReceipt(items);

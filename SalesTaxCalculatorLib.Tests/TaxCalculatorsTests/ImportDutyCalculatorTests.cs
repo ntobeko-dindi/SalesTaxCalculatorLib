@@ -24,7 +24,7 @@ public class ImportDutyCalculatorTests
         var item = new Item
         {
             Name = "Imported bottle of perfume",
-            ShelfPrice = 27.99m,
+            Price = 27.99m,
             IsImported = true,
             Type = ItemTypeEnum.Other
         };
@@ -45,7 +45,7 @@ public class ImportDutyCalculatorTests
         var item = new Item
         {
             Name = "Local Bottle of perfume",
-            ShelfPrice = 18.99m,
+            Price = 18.99m,
             IsImported = false,
             Type = ItemTypeEnum.Other
         };
@@ -66,7 +66,7 @@ public class ImportDutyCalculatorTests
         var item = new Item
         {
             Name = "Imported box of chocolates",
-            ShelfPrice = 11.25m,
+            Price = 11.25m,
             IsImported = true,
             Type = ItemTypeEnum.Food
         };
@@ -87,7 +87,7 @@ public class ImportDutyCalculatorTests
         var item = new Item
         {
             Name = "Imported book",
-            ShelfPrice = 12.49m,
+            Price = 12.49m,
             IsImported = true,
             Type = ItemTypeEnum.Book
         };
@@ -108,7 +108,7 @@ public class ImportDutyCalculatorTests
         var item = new Item
         {
             Name = "Imported packet of headache pills",
-            ShelfPrice = 9.75m,
+            Price = 9.75m,
             IsImported = true,
             Type = ItemTypeEnum.Medical
         };
