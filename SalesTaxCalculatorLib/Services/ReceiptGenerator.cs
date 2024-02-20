@@ -1,4 +1,5 @@
 ﻿using SalesTaxCalculatorLib.Interfaces;
+using SalesTaxCalculatorLib.Utilities;
 using SalesTaxCalculatorLib.Models;
 
 namespace SalesTaxCalculatorLib.Services;
@@ -16,6 +17,29 @@ public class ReceiptGenerator : IReceiptGenerator
 
     public Receipt GenerateReceipt(List<Item> items)
     {
-        throw new NotImplementedException();
+        var receiptItems = new List<ReceiptItem>();
+        var totalSalesTaxes = 0m;
+        var totalAmount = 0m;
+
+        foreach (var item in items)
+        {
+            var basicTax = _basicTaxCalculator.CalculateTax(item);
+            var importDuty = _importDutyTaxCalculator.CalculateTax(item);
+
+            var totalItemTax = TaxUtility.RoundUpTax(basicTax + importDuty);
+            var itemTotalPrice = item.Price + totalItemTax;
+
+            receiptItems.Add(new ReceiptItem { Name = item.Name, ShelfPrice = itemTotalPrice });
+
+            totalSalesTaxes += totalItemTax;
+            totalAmount += itemTotalPrice;
+        }
+
+        return new Receipt
+        {
+            Items = receiptItems,
+            SalesTaxes = totalSalesTaxes,
+            Total = totalAmount
+        };
     }
 }
