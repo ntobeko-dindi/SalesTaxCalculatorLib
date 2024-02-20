@@ -1,11 +1,11 @@
-﻿using SalesTaxCalculatorLib.Interfaces;
-using SalesTaxCalculatorLib.Models;
+﻿using SalesTaxCalculatorLib.Models;
+using SalesTaxCalculatorLib.Interfaces;
 
 namespace SalesTaxCalculatorLib.Services;
 
-public class ImportDutyCalculator : IImportDutyCalculator
+public class ImportDutyCalculator : ITaxCalculator
 {
-    public decimal CalculateImportDuty(Item item)
+    public decimal CalculateTax(Item item)
     {
         throw new NotImplementedException();
     }

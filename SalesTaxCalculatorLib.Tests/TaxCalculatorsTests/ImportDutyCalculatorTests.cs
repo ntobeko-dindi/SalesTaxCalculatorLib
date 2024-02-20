@@ -9,7 +9,7 @@ namespace SalesTaxCalculatorLib.Tests.TaxCalculatorsTests;
 [TestFixture]
 public class ImportDutyCalculatorTests
 {
-    private IImportDutyCalculator _importDutyCalculator;
+    private ITaxCalculator _importDutyCalculator;
 
     [SetUp]
     public void Setup()
@@ -32,7 +32,7 @@ public class ImportDutyCalculatorTests
         var expectedValue = 1.40m;
 
         //--------------------Act-----------------------------
-        var duty = _importDutyCalculator.CalculateImportDuty(item);
+        var duty = _importDutyCalculator.CalculateTax(item);
 
         // -------------------Assert--------------------------
         Assert.That(duty, Is.EqualTo(expectedValue));
@@ -53,7 +53,7 @@ public class ImportDutyCalculatorTests
         var expectedValue = 0;
 
         //--------------------Act-----------------------------
-        var duty = _importDutyCalculator.CalculateImportDuty(item);
+        var duty = _importDutyCalculator.CalculateTax(item);
 
         // -------------------Assert--------------------------
         Assert.That(duty, Is.EqualTo(expectedValue));
@@ -74,7 +74,7 @@ public class ImportDutyCalculatorTests
         var expectedValue = 0.60m;
 
         //--------------------Act-----------------------------
-        var duty = _importDutyCalculator.CalculateImportDuty(item);
+        var duty = _importDutyCalculator.CalculateTax(item);
 
         // -------------------Assert--------------------------
         Assert.That(duty, Is.EqualTo(expectedValue));
@@ -95,7 +95,7 @@ public class ImportDutyCalculatorTests
         var expectedValue = 0.65m;
 
         //--------------------Act-----------------------------
-        var duty = _importDutyCalculator.CalculateImportDuty(item);
+        var duty = _importDutyCalculator.CalculateTax(item);
 
         //--------------------Assert--------------------------
         Assert.That(duty, Is.EqualTo(expectedValue));
@@ -116,7 +116,7 @@ public class ImportDutyCalculatorTests
         var expectedValue = 0.50m;
 
         //--------------------Act-----------------------------
-        var duty = _importDutyCalculator.CalculateImportDuty(item);
+        var duty = _importDutyCalculator.CalculateTax(item);
 
         //--------------------Assert--------------------------
         Assert.That(duty, Is.EqualTo(expectedValue));
