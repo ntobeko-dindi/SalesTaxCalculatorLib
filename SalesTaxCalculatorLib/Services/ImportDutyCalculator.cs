@@ -1,5 +1,6 @@
 ﻿using SalesTaxCalculatorLib.Models;
 using SalesTaxCalculatorLib.Constants;
+using SalesTaxCalculatorLib.Utilities;
 using SalesTaxCalculatorLib.Interfaces;
 
 namespace SalesTaxCalculatorLib.Services;
@@ -15,11 +16,8 @@ public class ImportDutyCalculator : ITaxCalculator
 
         decimal importDutyTax = item.ShelfPrice * TaxRates.ImportDuty;
 
-        return RoundUpTax(importDutyTax);
-    }
+        var roundedImportDutyTax = TaxUtility.RoundUpTax(importDutyTax);
 
-    private decimal RoundUpTax(decimal tax)
-    {
-        return Math.Ceiling(tax / RoundingConstants.TaxRoundingFactor) * RoundingConstants.TaxRoundingFactor;
+        return roundedImportDutyTax;
     }
 }
