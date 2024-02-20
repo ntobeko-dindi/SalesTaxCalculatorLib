@@ -3,7 +3,7 @@ using SalesTaxCalculatorLib.Models;
 
 namespace SalesTaxCalculatorLib.Services;
 
-internal class ImportDutyCalculator : IImportDutyCalculator
+public class ImportDutyCalculator : IImportDutyCalculator
 {
     public decimal CalculateImportDuty(Item item)
     {
