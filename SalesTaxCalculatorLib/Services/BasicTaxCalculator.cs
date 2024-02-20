@@ -12,7 +12,7 @@ public class BasicTaxCalculator : ITaxCalculator
     {
         if (item.Type == ItemTypeEnum.Book || item.Type == ItemTypeEnum.Food || item.Type == ItemTypeEnum.Medical)
         {
-            return 0m; 
+            return TaxRates.ExemptTaxRate; 
         }
 
         decimal basicTax = item.Price * TaxRates.BasicTaxRate;

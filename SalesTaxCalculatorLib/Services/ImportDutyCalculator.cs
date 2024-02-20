@@ -11,7 +11,7 @@ public class ImportDutyCalculator : ITaxCalculator
     {
         if (!item.IsImported)
         {
-            return 0m;
+            return TaxRates.ExemptTaxRate;
         }
 
         decimal importDutyTax = item.Price * TaxRates.ImportDuty;
