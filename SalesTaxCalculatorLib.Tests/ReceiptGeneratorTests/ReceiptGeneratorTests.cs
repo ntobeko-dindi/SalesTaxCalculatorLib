@@ -46,6 +46,10 @@ public class ReceiptGeneratorTests
         {
             Assert.That(receipt.Total, Is.EqualTo(29.83m));
             Assert.That(receipt.SalesTaxes, Is.EqualTo(1.50m));
+
+            Assert.That(receipt.Items[0].ShelfPrice, Is.EqualTo(12.49m));
+            Assert.That(receipt.Items[1].ShelfPrice, Is.EqualTo(16.49m));
+            Assert.That(receipt.Items[2].ShelfPrice, Is.EqualTo(0.85m));
         });
     }
 
@@ -71,6 +75,9 @@ public class ReceiptGeneratorTests
         {
             Assert.That(receipt.Total, Is.EqualTo(65.15m));
             Assert.That(receipt.SalesTaxes, Is.EqualTo(7.65m));
+
+            Assert.That(receipt.Items[0].ShelfPrice, Is.EqualTo(10.50m));
+            Assert.That(receipt.Items[1].ShelfPrice, Is.EqualTo(54.65m));
         });
     }
 
@@ -93,9 +100,17 @@ public class ReceiptGeneratorTests
 
         //--------------------Act-----------------------------
         var receipt = _receiptGenerator.GenerateReceipt(items);
-
+        
         //--------------------Assert--------------------------
-        Assert.That(receipt.Total, Is.EqualTo(74.68m));
-        Assert.That(receipt.SalesTaxes, Is.EqualTo(6.70m));
+        Assert.Multiple(() =>
+        {
+            Assert.That(receipt.Total, Is.EqualTo(74.68m));
+            Assert.That(receipt.SalesTaxes, Is.EqualTo(6.70m));
+
+            Assert.That(receipt.Items[0].ShelfPrice, Is.EqualTo(32.19m));
+            Assert.That(receipt.Items[1].ShelfPrice, Is.EqualTo(20.89m));
+            Assert.That(receipt.Items[2].ShelfPrice, Is.EqualTo(9.75m));
+            Assert.That(receipt.Items[3].ShelfPrice, Is.EqualTo(11.85m));
+        });
     }
 }
